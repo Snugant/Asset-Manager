@@ -21,24 +21,29 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
 
-                    <li class="nav-item dropdown" id="bd-theme">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             {{ request.user.username}}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/settings">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><h6 class="dropdown-header">Theme</h6></li>
-                            <li><a class="dropdown-item" href="#" data-bs-theme-value="light">Light</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-theme-value="dark">Dark</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-theme-value="auto">Auto</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action" href="/settings">Settings</a>
+                <a class="list-group-item list-group-item-action" href="#" data-bs-theme-value="light">Light</a>
+                <a class="list-group-item list-group-item-action" href="#" data-bs-theme-value="dark">Dark</a>
+                <a class="list-group-item list-group-item-action" href="#" data-bs-theme-value="auto">Auto</a>
+                <a class=list-group-item list-group-item-action" href="/logout">Logout</a
+            </div>
+        </div>
+    </div>
 
     <div class="container my-3">
