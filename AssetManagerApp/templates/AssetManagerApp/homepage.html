@@ -1,44 +1,72 @@
 {% include './header.html' %}
 
 {% if user_spaces %}
-    <h1>Welcome to your spaces, {{ request.user.username}}</h1>    
+<h1>Welcome to your spaces, {{ request.user.username}}</h1>
 
-    <div class="row">
-        {% for space in user_spaces %}
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        {% if space.pinned %}
-                        <a href="{% url 'unpinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
-                            <i class="fa-solid fa-map-pin text-primary"></i>
-                        </a>
-                        {% else %}
-                        <a href="{% url 'pinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
-                            <i class="fa-solid fa-map-pin text-muted"></i>
-                        </a>
+<div class="row">
+    {% for space in user_spaces %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                {% if space.pinned %}
+                <a href="{% url 'unpinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
+                    <i class="fa-solid fa-map-pin text-primary"></i>
+                </a>
+                {% else %}
+                <a href="{% url 'pinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
+                    <i class="fa-solid fa-map-pin text-muted"></i>
+                </a>
 
-                        {% endif %}
+                {% endif %}
 
-                        <h5 class="card-title">{{space.name}}</h5>
+                <h5 class="card-title">{{space.name}}</h5>
 
-                        <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
-                             View
-                        </a>
-                        <a href="{% url 'editSpace' space_id=space.id %}" class="btn btn-secondary">
-                             Edit
-                        </a>
-                        <a href="{% url 'deleteSpace' space_id=space.id %}" class="btn btn-danger">
-                             Delete
-                        </a>
-                    </div>
-                </div>
+                <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
+                    View
+                </a>
+                <a href="{% url 'editSpace' space_id=space.id %}" class="btn btn-secondary">
+                    Edit
+                </a>
+                <a href="{% url 'shareSpace' space_id=space.id %}" class="btn btn-success">
+                    Share
+                </a>
+                <a href="{% url 'deleteSpace' space_id=space.id %}" class="btn btn-danger">
+                    Delete
+                </a>
             </div>
-        {% endfor %}
+        </div>
     </div>
+    {% endfor %}
+
+    {% for space in shared_spaces %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                {% if space.pinned %}
+                <a href="{% url 'unpinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
+                    <i class="fa-solid fa-map-pin text-primary"></i>
+                </a>
+                {% else %}
+                <a href="{% url 'pinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
+                    <i class="fa-solid fa-map-pin text-muted"></i>
+                </a>
+
+                {% endif %}
+
+                <h5 class="card-title">{{space.name}}</h5>
+
+                <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
+                    View
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% else %}
-    <div class="alert alert-warning">
-        No spaces found.
-    </div>
+<div class="alert alert-warning">
+    No spaces found.
+</div>
 {% endif %}
 
 <a href="{% url 'createSpace' %}" class="btn btn-primary float-end">Create new space</a>

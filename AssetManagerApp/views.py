@@ -1,3 +1,4 @@
+from gc import get_objects
 from os import name
 from django.db.models import manager
 from django.shortcuts import get_object_or_404, render, redirect
@@ -13,19 +14,22 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import UserLogForm
 from .forms import EditSpaceForm
+from .forms import ShareSpaceForm
 from .models import UserLog
 from .models import Space, SpaceMemberManagment
+
 
 def sitehome(request):
  return render(request, "AssetManagerApp/index.html")
 
 @login_required(login_url="login")
 def homepage(request):
-    spaces = Space.objects.all()
-    
     if request.user.is_authenticated:
         user_spaces = Space.objects.filter(owner=request.user)
-        return render(request, "AssetManagerApp/homepage.html", {'user_spaces': user_spaces})
+
+        shared_spaces = Space.objects.filter(spacemembermanagment__user=request.user)
+        
+        return render(request, "AssetManagerApp/homepage.html", {'user_spaces': user_spaces, 'shared_spaces': shared_spaces})
     
     else:
         return render(request, "AssetManagerApp/homepage.html")
@@ -192,3 +196,16 @@ def unpinSpace(request, space_id):
     
     return redirect('')
     
+@login_required(login_url="login")
+def shareSpace(request, space_id): 
+    # spaceMemberManagement = get_objects(SpaceMemberManagment)
+   
+    if request.method == 'POST':
+        form = ShareSpaceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('')
+    else:
+        form = ShareSpaceForm()
+
+    return render(request, "AssetManagerApp/share-space.html", {'form': form})  

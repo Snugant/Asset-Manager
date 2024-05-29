@@ -6,6 +6,11 @@ from django.db.models.fields import related
 from django.db.models import CASCADE
 
 
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100, default='')
+
+
 class UserLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     space = models.ForeignKey('Space', on_delete=models.CASCADE)
@@ -18,6 +23,9 @@ class Space(models.Model):
     name = models.CharField(max_length=100)
     pinned = models.BooleanField(default=False)
     descriptions = models.TextField()
+    
+    def __str__(self):
+        return self.name
     
 class SpaceMemberManagment(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE)

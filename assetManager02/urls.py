@@ -52,4 +52,6 @@ urlpatterns = [
     path('pin-space/<int:space_id>/', views.pinSpace, name='pinSpace'),
     
     path('unpin-space/<int:space_id>/', views.unpinSpace, name='unpinSpace'),
+    
+    path('share-space/<int:space_id>/', views.shareSpace, name='shareSpace'),
 ]

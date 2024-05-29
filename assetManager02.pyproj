@@ -57,6 +57,7 @@
     <Content Include="AssetManagerApp\templates\AssetManagerApp\new-log.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\register.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\create-space.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\share-space.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\space-manage.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\settings.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\edit-item.html" />
