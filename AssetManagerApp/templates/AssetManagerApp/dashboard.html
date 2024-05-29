@@ -14,15 +14,12 @@
         </p>
 
         <div class="text-right">
-            <form method="post" action="{% url 'editItem' item.id space.id %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-secondary">Edit</button>
-            </form>
-
-            <form method="post" action="{% url 'deleteItem' item.id space.id %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+            <a href="{% url 'editItem' log_id=item.id space_id=space.id %}" class="btn btn-secondary">
+                Edit
+            </a>
+            <a href="{% url 'deleteItem' log_id=item.id space_id=space.id %}" class="btn btn-danger">
+                Delete
+            </a>
         </div>
     </div>
 </div>
