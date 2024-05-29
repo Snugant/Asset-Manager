@@ -50,7 +50,6 @@
     <Compile Include="assetManager02\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssetManagerApp\themes.js" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\dashboard.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\editLog.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\homepage.html" />
