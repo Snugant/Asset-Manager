@@ -1,0 +1,17 @@
+{% include './header.html' %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+
+            {{loginform.as_p}}
+
+            <input type="submit" value="Login" class="btn btn-primary">
+            <a href="/register" class="btn btn-secondary">Register</a>
+        </form>
+    </div>
+</div>
+
+{% include './footer.html' %}

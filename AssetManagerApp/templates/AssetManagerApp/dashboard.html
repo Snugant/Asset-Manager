@@ -1,0 +1,40 @@
+{% include './header.html' %}
+
+<h1>Welcome to your space, {{ request.user.username}}</h1>
+
+{% if user_logs %}
+<h2>Your items</h2>
+    {% for item in user_logs %}
+<div class="card">
+    <div class="card-body">
+        <h3>{{ item.title }}</h3>
+
+        <p>
+            {{ item.information }}
+        </p>
+
+        <div class="text-right">
+            <form method="post" action="{% url 'editItem' item.id space.id %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+
+            <form method="post" action="{% url 'deleteItem' item.id space.id %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+{% else %}
+<div class="alert alert-warning">
+    No items found.
+</div>
+{% endif %}
+
+<div class="mt-2 text-end">
+    <a href="{% url 'newItem' space_id=space.id %}" class="btn btn-primary">Add new item</a>
+</div>
+
+{% include './footer.html' %}

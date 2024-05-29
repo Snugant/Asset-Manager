@@ -1,0 +1,33 @@
+{% include './header.html' %}
+
+{% if user_spaces %}
+<h1>Welcome to your spaces, {{ request.user.username}}</h1>
+
+    {% for space in user_spaces %}
+<div class="card mb-2">
+    <div class="card-body">
+        <h3>{{space.name}}</h3>
+
+        <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
+            View
+        </a>
+
+        <a href="{% url 'editSpace' space_id=space.id %}" class="btn btn-secondary">
+            Edit
+        </a>
+
+        <a href="{% url 'deleteSpace' space_id=space.id %}" class="btn btn-danger">
+            Delete
+        </a>
+    </div>
+</div>
+    {% endfor %}
+{% else %}
+<div class="alert alert-warning">
+    No spaces found.
+</div>
+{% endif %}
+
+<a href="{% url 'createSpace' %}" class="btn btn-primary float-end">Create new space</a>
+
+{% include './footer.html' %}
