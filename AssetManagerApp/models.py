@@ -16,6 +16,7 @@ class UserLog(models.Model):
 class Space(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owned_spaces')
     name = models.CharField(max_length=100)
+    pinned = models.BooleanField(default=False)
     descriptions = models.TextField()
     
 class SpaceMemberManagment(models.Model):

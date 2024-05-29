@@ -51,16 +51,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AssetManagerApp\templates\AssetManagerApp\dashboard.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\editLog.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\edit-log.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\homepage.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\login.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\newLog.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\new-log.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\register.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\createSpace.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\spaceManage.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\create-space.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\space-manage.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\settings.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\editItem.html" />
-    <Content Include="AssetManagerApp\templates\AssetManagerApp\editSpace.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\edit-item.html" />
+    <Content Include="AssetManagerApp\templates\AssetManagerApp\edit-space.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\header.html" />
     <Content Include="AssetManagerApp\templates\AssetManagerApp\footer.html" />
     <Content Include="requirements.txt" />

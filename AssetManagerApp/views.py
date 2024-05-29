@@ -77,7 +77,7 @@ def login(request):
 
 @login_required(login_url="login")
 def dashboard(request, space_id):
-    
+    user_spaces = Space.objects.filter(owner=request.user)
     space = get_object_or_404(Space, id=space_id)
     
     if request.method == "POST":
@@ -93,7 +93,7 @@ def dashboard(request, space_id):
         form = UserLogForm()
     
     user_logs = UserLog.objects.filter(user=request.user, space=space)
-    return render(request,"AssetManagerApp/dashboard.html", {'form': form, 'user_logs': user_logs, 'space': space})
+    return render(request,"AssetManagerApp/dashboard.html", {'form': form, 'user_logs': user_logs, 'space': space, 'user_spaces': user_spaces})
 
 
 def logout(request):
@@ -164,7 +164,7 @@ def createSpace(request):
         
     else:
         form = CreateSpaceForm()
-    return render(request, "AssetManagerApp/createSpace.html")
+    return render(request, "AssetManagerApp/create-space.html")
 
 @login_required(login_url="login")
 def deleteSpace(request, space_id):
@@ -175,3 +175,20 @@ def deleteSpace(request, space_id):
 @login_required(login_url="login")
 def settings(request):
     return render(request, "AssetManagerApp/settings.html")
+
+@login_required(login_url="login")
+def pinSpace(request, space_id): 
+    space = get_object_or_404(Space, id=space_id)
+    space.pinned = True;
+    space.save();
+    
+    return redirect('')
+
+@login_required(login_url="login")
+def unpinSpace(request, space_id): 
+    space = get_object_or_404(Space, id=space_id) 
+    space.pinned = False;
+    space.save();
+    
+    return redirect('')
+    

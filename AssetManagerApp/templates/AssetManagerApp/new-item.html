@@ -1,0 +1,22 @@
+{% include './header.html' %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Add item</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_title" class="form-label">Title</label>
+                    <input type="text" id="id_title" name="title" class="form-control" placeholder="The title of the item">
+                </div>
+                <div class="mb-3">
+                    <label for="id_information" class="form-label">Information</label>
+                    <textarea id="id_information" name="information" class="form-control" placeholder="Some information about your item"></textarea>
+                </div>
+                <button typr="submit" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+{% include './footer.html' %}

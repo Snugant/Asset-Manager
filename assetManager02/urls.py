@@ -49,4 +49,7 @@ urlpatterns = [
     
     path('settings', views.settings, name='settings'),
     
+    path('pin-space/<int:space_id>/', views.pinSpace, name='pinSpace'),
+    
+    path('unpin-space/<int:space_id>/', views.unpinSpace, name='unpinSpace'),
 ]
