@@ -21,26 +21,44 @@
 
                 <h5 class="card-title">{{space.name}}</h5>
 
-                <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
-                    View
-                </a>
-                <a href="{% url 'editSpace' space_id=space.id %}" class="btn btn-secondary">
-                    Edit
-                </a>
-                <a href="{% url 'shareSpace' space_id=space.id %}" class="btn btn-success">
-                    Share
-                </a>
-                <a href="{% url 'deleteSpace' space_id=space.id %}" class="btn btn-danger">
-                    Delete
-                </a>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Options
+                    </button>
+
+
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <br>
+                            <div class="btn-group" role="group" aria-label="Default button group">
+                                <a href="{% url 'dashboard' space_id=space.id %}" class="btn btn-primary">
+                                    View
+                                </a>
+                                <a href="{% url 'editSpace' space_id=space.id %}" class="btn btn-secondary">
+                                    Edit
+                                </a>
+                                <a href="{% url 'shareSpace' space_id=space.id %}" class="btn btn-success">
+                                    Share
+                                </a>
+                                <a href="{% url 'deleteSpace' space_id=space.id %}" class="btn btn-danger">
+                                    Delete
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+
+
+
     {% endfor %}
 
     {% for space in shared_spaces %}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-        <div class="card">
+        <div class="card text-bg-secondary mb-3">
             <div class="card-body">
                 {% if space.pinned %}
                 <a href="{% url 'unpinSpace' space_id=space.id %}" class="btn btn-default btn-sm float-end">
